@@ -1,0 +1,11 @@
+spring:
+  kafka:
+    bootstrap-servers: kafka:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      properties:
+        batch.size: 16384
+        buffer.memory: 33554432
+        linger.ms: 5
+        acks: all
