@@ -4,8 +4,11 @@
 
 ## 이 프로젝트의 설정
 Kafka
+
 topicName : "trafficSystem"
+
 Partition 개수 : 4
+
 replication 개수 : 1
 
 ```
