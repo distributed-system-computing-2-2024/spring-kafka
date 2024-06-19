@@ -2,6 +2,9 @@ package com.teamtwo.trafficsystem.batch;
 
 import com.teamtwo.trafficsystem.domain.TrafficData;
 import com.teamtwo.trafficsystem.utils.TrafficUtils;
+
+import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
@@ -40,12 +43,14 @@ public class TrafficBatch {
     @Bean
     public Tasklet tasklet(){
         return ((contribution, chunkContext) -> {
+            LocalTime localTime = LocalTime.now(ZoneId.of("Asia/Seoul"));
             List<TrafficData> trafficDataList = trafficUtils.getExchangeDataAsDtoList();
 
             for (TrafficData traffic : trafficDataList) {
                 log.info("위치 : " + traffic.getConzoneName());
                 kafkaTemplate.send("trafficSystem", traffic);
             }
+            log.info("\n시작 시간: {}, 데이터 개수: {}", localTime, trafficDataList.size());
             return RepeatStatus.FINISHED;
         });
     }
