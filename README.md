@@ -1,5 +1,5 @@
 # Spring-kafka
-한국도로공사 실시간 소통 데이터 링크정보를 가지고 와 Kafka에 publish하는 스프링 서버
+Spring scheduler를 사용해 5분 단위로 한국도로공사 실시간 소통 데이터 링크정보를 가지고 와 Kafka에 publish하는 스프링 Batch 서버
 
 
 ## 이 프로젝트의 설정
